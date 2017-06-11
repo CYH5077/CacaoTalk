@@ -102,6 +102,20 @@
 				</Trigger>
 			</ControlTemplate.Triggers>
 		</ControlTemplate>
+		<ControlTemplate x:Key="Chat_Send_btn" TargetType="{x:Type Button}">
+			<Grid>
+				<Rectangle x:Name="rectangle" HorizontalAlignment="Left" Height="70" Stroke="Black" VerticalAlignment="Top" Width="108" RadiusX="20" RadiusY="20" Fill="#FF297444"/>
+				<Label Content="SEND" HorizontalAlignment="Left" Margin="15.386,11.53,0,0" VerticalAlignment="Top" FontSize="26.667" FontWeight="Bold"/>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Fill" TargetName="rectangle" Value="#FF4B8961"/>
+				</Trigger>
+				<Trigger Property="IsPressed" Value="True">
+					<Setter Property="Fill" TargetName="rectangle" Value="#FF222C26"/>
+				</Trigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
 	</Window.Resources>
 	<Window.Triggers>
 		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
@@ -192,7 +206,7 @@
 
     		<Rectangle Fill="#FF3A7670" HorizontalAlignment="Left" Height="412" Margin="455,10,0,0" RadiusY="20" RadiusX="20" Stroke="{x:Null}" VerticalAlignment="Top" Width="212"/>
     		<Rectangle Fill="#FF3A7670" HorizontalAlignment="Left" Height="412" RadiusY="20" RadiusX="20" Stroke="{x:Null}" VerticalAlignment="Top" Width="415" Margin="26,10,0,0"/>
-    		<Button x:Name="chat_send_btn" Content="Button" Margin="315,343,254,31" Click="chat_send_btn_Click"/>
+    		<Button x:Name="chat_send_btn" Content="Button" Margin="315,343,254,31" Click="chat_send_btn_Click" Template="{DynamicResource Chat_Send_btn}"/>
     		<ListView x:Name="chat_list" Margin="44,24,254,106" BorderBrush="Black" Background="White" Foreground="White" BorderThickness="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
     			
     			<ListView.Resources>
@@ -216,7 +230,7 @@
     				</GridView>
     			</ListView.View>
     		</ListView>
-    		<TextBox x:Name="chat_box" TextWrapping="Wrap" Text="TextBox" Margin="44,343,367,31" KeyUp="chat_box_KeyUp"/>
+    		<TextBox x:Name="chat_box" TextWrapping="Wrap" Margin="44,343,367,31" KeyUp="chat_box_KeyUp"/>
     		<ListBox x:Name="user_list" HorizontalAlignment="Left" Height="389" Margin="466,24,0,0" VerticalAlignment="Top" Width="188"/>
     	</Grid>
 		
